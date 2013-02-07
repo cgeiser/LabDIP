@@ -25,9 +25,13 @@ public class Startup {
  
     public static void main(String[] args) {
         
-        TipCalculator airport =
+        BaggageServiceTipCalculator airport =
                 new BaggageServiceTipCalculator(0.20 ,5);
         
+        TipEvent event = new TipEvent();
+        
+        double tip = event.TipEvent(airport);
+        System.out.println(tip);
     }
 
 }

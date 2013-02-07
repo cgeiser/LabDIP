@@ -25,9 +25,8 @@ public class Startup {
  
     public static void main(String[] args) {
         
-        BaggageServiceTipCalculator service =
-                new BaggageServiceTipCalculator(
-                BaggageServiceTipCalculator.ServiceQuality.FAIR,5);
+        TipCalculator airport =
+                new BaggageServiceTipCalculator(0.20 ,5);
         
     }
 

@@ -1,7 +1,5 @@
 package dip.lab2.student.solution1;
 
-import dip.lab2.*;
-
 /**
  * An example low-level class. Does this class definition follow the DIP?
  * If not, fix it.
@@ -10,7 +8,7 @@ import dip.lab2.*;
  *
  * @author your name goes here
  */
-public class BaggageServiceTipCalculator implements TipCalculator {
+public class BaggageServiceTipCalculator {
     private static final double MIN_BILL = 0.00;
     private static final double MAX_BILL = 100.00;
     private static final String BILL_ENTRY_ERR =
@@ -34,8 +32,7 @@ public class BaggageServiceTipCalculator implements TipCalculator {
         baseTipPerBag = 1.00; // set default value
     }
 
-    @Override
-    public double getTip() {
+    public double getTipForBaggeHandler() {
         double tip = 0.00; // always initialize local variables
 
         switch(serviceQuality) {

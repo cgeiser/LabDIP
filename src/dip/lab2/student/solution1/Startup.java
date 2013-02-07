@@ -24,14 +24,18 @@ public class Startup {
     };
  
     public static void main(String[] args) {
-        
-        BaggageServiceTipCalculator airport =
-                new BaggageServiceTipCalculator(0.20 ,5);
-        
         TipEvent event = new TipEvent();
         
-        double tip = event.TipEvent(airport);
-        System.out.println(tip);
+        TipCalculator airport =
+                new BaggageServiceTipCalculator(0.20, 5);
+     
+        System.out.println(event.TipEvent(airport));
+        
+        
+        
+        TipCalculator restaurant = new FoodServiceTipCalculator(0.25, 84.25);
+        
+        System.out.println(event.TipEvent(restaurant));
     }
 
 }

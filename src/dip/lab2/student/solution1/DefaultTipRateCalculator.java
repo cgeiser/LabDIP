@@ -1,38 +1,41 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package dip.lab2.student.solution1;
 
 /**
  *
  * @author chrisgeiser
  */
-public class DefaultTipRateCalculator {
+public class DefaultTipRateCalculator implements TipRateCalculator {
     private static final double GOOD_RATE = 0.20;
     private static final double FAIR_RATE = 0.15;
     private static final double POOR_RATE = 0.10;
 
-    public enum ServiceQuality {
-        GOOD, FAIR, POOR
-    }
-    private ServiceQuality serviceQuality;
+//    public enum ServiceQuality {
+//        GOOD, FAIR, POOR
+//    }
+//    private ServiceQuality serviceQuality;
     
+    private String serviceQuality;
+    
+    @Override
     public double getTipRate() {
         double tipRate = 0.00; // always initialize local variables
 
         switch(serviceQuality) {
-            case GOOD:
+            case "GOOD":
                 tipRate = GOOD_RATE;
                 break;
-            case FAIR:
+            case "FAIR":
                 tipRate = FAIR_RATE;
                 break;
-            case POOR:
+            case "POOR":
                 tipRate = POOR_RATE;
                 break;
         }
 
         return tipRate;
+    }
+    @Override
+    public void setServiceQuality(String srvcQuality) {
+        this.serviceQuality = srvcQuality;
     }
 }

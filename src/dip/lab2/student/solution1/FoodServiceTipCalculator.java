@@ -52,6 +52,7 @@ public class FoodServiceTipCalculator implements TipCalculator {
         return tipRate;
     }
 
+    @Override
     public final void setTipRate(double tipRate) {
         this.tipRate = tipRate;
     }

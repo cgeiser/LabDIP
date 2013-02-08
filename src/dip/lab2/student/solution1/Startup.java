@@ -24,18 +24,22 @@ public class Startup {
     };
  
     public static void main(String[] args) {
+        
         TipEvent event = new TipEvent();
         
+        // set TipRateCalculator to use Default
+        TipRateCalculator tipRate = new DefaultTipRateCalculator();
+        tipRate.setServiceQuality(ServiceQuality.POOR.toString());
+        
+        
         TipCalculator airport =
-                new BaggageServiceTipCalculator(0.20, 5);
-     
-        System.out.println(event.TipEvent(airport));
+                new BaggageServiceTipCalculator(5);
+        System.out.println(event.TipEvent(airport, tipRate));
         
         
         
         TipCalculator restaurant = new FoodServiceTipCalculator(0.25, 84.25);
-        
-        System.out.println(event.TipEvent(restaurant));
+        System.out.println(event.TipEvent(restaurant, tipRate));
     }
 
 }

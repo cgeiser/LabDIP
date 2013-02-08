@@ -25,13 +25,14 @@ public class BaggageServiceTipCalculator implements TipCalculator {
 
     
     
-    public BaggageServiceTipCalculator(double tipRate, int bags) {
-        this.setTipRate(tipRate);
+    public BaggageServiceTipCalculator(int bags) {
+//        this.setTipRate(tipRate);
         this.setBagCount(bags);
 
         baseTipPerBag = 1.00; // set default value
     }
 
+    @Override
     public double getTipAmount() {
         double tip = baseTipPerBag * bagCount * (1 + tipRate);
         return tip;
@@ -74,7 +75,8 @@ public class BaggageServiceTipCalculator implements TipCalculator {
         return tipRate;
     }
 
-    private void setTipRate(double tipRate) {
+    @Override
+    public void setTipRate(double tipRate) {
         this.tipRate = tipRate;
     }
 

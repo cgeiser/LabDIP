@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package dip.lab2.student.solution1;
 
 /**
@@ -10,7 +6,11 @@ package dip.lab2.student.solution1;
  */
 public class TipEvent {
     
-    public double TipEvent(TipCalculator calculator) {
+    public double TipEvent(TipCalculator calculator,
+            TipRateCalculator rateCalc) {
+        
+        double tipRate = rateCalc.getTipRate();
+        calculator.setTipRate(tipRate);
         return calculator.getTipAmount();
     }
     

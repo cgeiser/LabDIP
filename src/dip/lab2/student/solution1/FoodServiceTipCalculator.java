@@ -23,10 +23,12 @@ public class FoodServiceTipCalculator implements TipCalculator {
     
     
     public FoodServiceTipCalculator(double tipRate, double billAmt) {
+//        this.setServiceQuality(sq);
         this.setTipRate(tipRate);
         this.setBill(billAmt);
     }
 
+    @Override
     public double getTipAmount() {
         double tip = bill * tipRate;
         return tip;
@@ -39,15 +41,16 @@ public class FoodServiceTipCalculator implements TipCalculator {
         bill = billAmt;
     }
 
-    public final void setServiceRating(ServiceQuality q) {
+    public final void setServiceQuality(ServiceQuality q) {
         // No need to validate because enums provide type safety!
         serviceQuality = q;
     }
 
-    public ServiceQuality getServiceQuality() {
-        return serviceQuality;
+    @Override
+    public String getServiceQuality() {
+        return serviceQuality.toString();
     }
-
+    
     public final double getTipRate() {
         return tipRate;
     }

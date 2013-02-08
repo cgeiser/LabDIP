@@ -14,4 +14,6 @@ public interface TipCalculator {
     
     public abstract void setTipRate(double tipRate);
     
+    public abstract String getServiceQuality();
+    
 }

@@ -22,24 +22,38 @@ public class Startup {
     public static enum ServiceQuality {
            GOOD, FAIR, POOR
     };
- 
+    public static ServiceQuality serviceQuality;
+    
     public static void main(String[] args) {
         
         TipEvent event = new TipEvent();
         
         // set TipRateCalculator to use Default
         TipRateCalculator tipRate = new DefaultTipRateCalculator();
-        tipRate.setServiceQuality(ServiceQuality.POOR.toString());
+        tipRate.setServiceQuality(ServiceQuality.GOOD.toString());
         
         
         TipCalculator airport =
-                new BaggageServiceTipCalculator(5);
+                new BaggageServiceTipCalculator(8);
         System.out.println(event.TipEvent(airport, tipRate));
         
         
         
-        TipCalculator restaurant = new FoodServiceTipCalculator(0.25, 84.25);
+        tipRate.setServiceQuality(ServiceQuality.FAIR.toString());
+        
+        TipCalculator restaurant = new FoodServiceTipCalculator(
+                tipRate.getTipRate(), 84.25);
         System.out.println(event.TipEvent(restaurant, tipRate));
+        
+        
+        
+        TipRateCalculator tipRateLuxe = new LuxuryTipRateCalculator();
+        tipRateLuxe.setServiceQuality(ServiceQuality.GOOD.toString());
+        
+        TipCalculator fancyRestaurant = new FoodServiceTipCalculator(
+                tipRateLuxe.getTipRate(), 472.55);
+        System.out.println(event.TipEvent(fancyRestaurant, tipRateLuxe));
+        
     }
 
 }

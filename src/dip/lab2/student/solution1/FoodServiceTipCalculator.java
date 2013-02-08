@@ -23,7 +23,6 @@ public class FoodServiceTipCalculator implements TipCalculator {
     
     
     public FoodServiceTipCalculator(double tipRate, double billAmt) {
-//        this.setServiceQuality(sq);
         this.setTipRate(tipRate);
         this.setBill(billAmt);
     }
@@ -31,6 +30,9 @@ public class FoodServiceTipCalculator implements TipCalculator {
     @Override
     public double getTipAmount() {
         double tip = bill * tipRate;
+        tip *= 100;
+        double round = Math.round(tip);
+        tip = round / 100;
         return tip;
     }
 

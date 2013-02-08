@@ -24,6 +24,7 @@ public class Startup {
     };
     public static ServiceQuality serviceQuality;
     
+    NumberFormat currency ;
     public static void main(String[] args) {
         
         TipEvent event = new TipEvent();
@@ -35,7 +36,8 @@ public class Startup {
         
         TipCalculator airport =
                 new BaggageServiceTipCalculator(8);
-        System.out.println(event.TipEvent(airport, tipRate));
+        System.out.println("The tip for handling baggage is " +
+                CurrencyFormat(event.TipEvent(airport, tipRate)));
         
         
         
@@ -43,7 +45,8 @@ public class Startup {
         
         TipCalculator restaurant = new FoodServiceTipCalculator(
                 tipRate.getTipRate(), 84.25);
-        System.out.println(event.TipEvent(restaurant, tipRate));
+        System.out.println("The tip for food service is "
++                CurrencyFormat(event.TipEvent(restaurant, tipRate)));
         
         
         
@@ -52,8 +55,14 @@ public class Startup {
         
         TipCalculator fancyRestaurant = new FoodServiceTipCalculator(
                 tipRateLuxe.getTipRate(), 472.55);
-        System.out.println(event.TipEvent(fancyRestaurant, tipRateLuxe));
+        System.out.println("The tip for food service at a luxury restaurant is " + 
+                CurrencyFormat(event.TipEvent(fancyRestaurant, tipRateLuxe)));
         
+    }
+    
+    public static String CurrencyFormat(double a) {
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+            return nf.format(a);
     }
 
 }

@@ -9,11 +9,6 @@ public class DefaultTipRateCalculator implements TipRateCalculator {
     private static final double FAIR_RATE = 0.15;
     private static final double POOR_RATE = 0.10;
 
-//    public enum ServiceQuality {
-//        GOOD, FAIR, POOR
-//    }
-//    private ServiceQuality serviceQuality;
-    
     private String serviceQuality;
     
     @Override

@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  *    high-level class. Did it work? Are the low-level instances
  *    interchangeable? The DIP requires this.
  * 
- * @author your name goes here
+ * @author chrisgeiser
  */
 public class Startup {
     public static enum ServiceQuality {
@@ -33,14 +33,14 @@ public class Startup {
         TipRateCalculator tipRate = new DefaultTipRateCalculator();
         tipRate.setServiceQuality(ServiceQuality.GOOD.toString());
         
-        
+        // Good quality airport baggage service event
         TipCalculator airport =
                 new BaggageServiceTipCalculator(8);
         System.out.println("The tip for handling baggage is " +
                 CurrencyFormat(event.TipEvent(airport, tipRate)));
         
         
-        
+        // Fair quality restaurant food service event
         tipRate.setServiceQuality(ServiceQuality.FAIR.toString());
         
         TipCalculator restaurant = new FoodServiceTipCalculator(
@@ -49,7 +49,8 @@ public class Startup {
 +                CurrencyFormat(event.TipEvent(restaurant, tipRate)));
         
         
-        
+        // Good quality fancy restaurant food service event
+        // using LuxuryTipRateCalculator
         TipRateCalculator tipRateLuxe = new LuxuryTipRateCalculator();
         tipRateLuxe.setServiceQuality(ServiceQuality.GOOD.toString());
         

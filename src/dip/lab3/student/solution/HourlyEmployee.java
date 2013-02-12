@@ -3,10 +3,9 @@ package dip.lab3.student.solution;
 import dip.lab1.*;
 
 /**
- * An implementation sub-class of an Employee. These are low-level classes
- * in the DIP. Does it meet the rules of DIP? If not fix it.
- *
- * @author your name goes here
+ * A simple implementation sub-class of an Employee.
+ * 
+ * @author chrisgeiser
  */
 public class HourlyEmployee implements Employee {
     
@@ -14,9 +13,10 @@ public class HourlyEmployee implements Employee {
     private double totalHrsForYear;
     private double annualBonus;
     /**
-     * Convenience constructor. Is this the best way to go?
+     * Convenience constructor. 
      * @param hourlyRate - the rate per hour that the employee is paid
      * @param totalHrsForYear - total hours worked or predicted per year
+     * @param annualBonus - annual bonus amount (0 if none)
      */
     public HourlyEmployee(double hourlyRate, double totalHrsForYear,
             double annualBonus) {
@@ -28,6 +28,7 @@ public class HourlyEmployee implements Employee {
     @Override
     public double getAnnualCompensation() {
         double total = hourlyRate * totalHrsForYear;
+        // round to 2 decimal places
         return ((Math.round(total * 100)) / 100) + annualBonus;
     }
 
